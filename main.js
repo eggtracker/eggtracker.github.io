@@ -20,7 +20,7 @@ let osmpath="https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 let satpath="https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.webp?sku=101Xb2qC6qvmw&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA";
 
 function init(){
-	ws=new WebSocket("ws://8.tcp.ngrok.io:12038");
+	ws=new WebSocket("wss://8.tcp.ngrok.io:12038");
 	ws.onopen=function(){
 		document.getElementById("signInBtn01").style.display="block";
 		if(debugMode){fakeSignIn();}

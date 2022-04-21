@@ -1,0 +1,229 @@
+/*Basic*/
+body{
+	font-family:Arial;
+	padding:0;
+	margin:0;
+	background:black;
+}
+
+/*Classes*/
+.txtonimg{
+	text-shadow: 2px 2px 4px #FFFFFF;
+}
+
+.bar_icon{
+	display:inline-block;
+	width:58px;
+	height:58px;
+	margin-right:12px;
+}
+
+.bar_item{
+	display:inline-block;
+	height:70px;
+}
+
+.bar_text{
+	display:inline-block;
+	font-size:38px;
+}
+
+.bar_icon_smol{
+	display:inline-block;
+	width:38px;
+	height:38px;
+	margin-right:12px;
+}
+
+.tool_icon{
+	width:82px;
+	height:82px;
+}
+
+/*Single widgets*/
+#signInBtn01{
+	display:none;
+}
+
+#bar{
+	position:fixed;
+	display:block;
+	z-index:10000000000;
+	width:100%;
+	background:white;
+	padding:12px;
+}
+
+#welcome{
+	display:none;
+	position:fixed;
+	z-index:1000000001000000;
+	width:100%;
+	height:50%;
+	margin-top:200px;
+	background:white;
+	box-shadow:20px 20px 40px #000000;
+	-omayouaBrowser-floatingHologram:5cm 2cm 0cm 500000000;
+	-omayouaBrowser-djguhu5kheisrugskrgh:0 1cm 2mm 3px 4dp;
+}
+
+#down{
+	position:fixed;
+	z-index:10000000000;
+	width:100%;
+	height:94px;
+	top:calc(100% - 94px);
+	background:#090a26;
+	color:white;
+	padding-top:12px;
+}
+
+#desc{
+	position:fixed;
+	z-index:100000000110;
+	top:calc(100% - 250px);
+	background:black;
+	color:white;
+	display:none;
+}
+
+#wow{
+	position:fixed;
+	z-index:200000000000;
+	width:100%;
+	height:100%;
+	margin:0;
+	color:white;
+	background:rgba(0,0,0,0.4);
+	padding-top:100px;
+	display:none;
+}
+
+#lose{
+	position:fixed;
+	z-index:200000000000;
+	width:100%;
+	height:100%;
+	margin:0;
+	color:white;
+	background:rgba(0,0,0,0.4);
+	padding-top:100px;
+	display:none;
+}
+
+
+#hegg{
+	position:fixed;
+	z-index:1;
+	left:calc(50% - 110px);
+}
+
+
+#hshine{
+	rotation:0deg;
+	left:calc(50% - 256px);
+}
+
+#meter{
+	position:fixed;
+	top:100px;
+	width:100%;
+	height:50px;
+	background:black;
+	z-index:10000000000;
+	padding:4px;
+	display:none;
+}
+
+#meter_in{
+	width:calc(100% - 8px);
+	height:50px;
+	background:#0000ff;
+	background:-moz-linear-gradient(left,  #0000ff 0%, #ff4245 100%);
+	background:-webkit-linear-gradient(left,  #0000ff 0%,#ff4245 100%);
+	background:linear-gradient(to right,  #0000ff 0%,#ff4245 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000ff', endColorstr='#ff4245',GradientType=1 );
+}
+
+#meter_point{
+	position:fixed;
+	width:10px;
+	height:50px;
+	background:green;
+}
+
+
+/*Screens*/
+#screen0{
+	color:white;
+	text-align:center;
+	font-size:30px;
+	width:100%;
+	height:100%;
+}
+
+#screen1{
+	background:url("assets/bg.jpg");
+	background-position:center center;
+	width:100%;
+	height:100%;
+}
+
+#screen2{
+	width:100%;
+	height:100%;
+}
+
+#screen3{
+	width:100%-8px;
+	height:100%-8px;
+	color:white;
+	padding:8px;
+	position:fixed;
+}
+
+#screen4{
+	width:100%;
+	height:100%;
+	color:black;
+	background:white;
+	position:fixed;
+}
+
+/*Junk*/
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+from {
+-webkit-transform: rotate(0deg);
+-o-transform: rotate(0deg);
+transform: rotate(0deg);
+}
+to {
+-webkit-transform: rotate(360deg);
+-o-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+}
+@keyframes rotating {
+from {
+-ms-transform: rotate(0deg);
+-moz-transform: rotate(0deg);
+-webkit-transform: rotate(0deg);
+-o-transform: rotate(0deg);
+transform: rotate(0deg);
+}
+to {
+-ms-transform: rotate(360deg);
+-moz-transform: rotate(360deg);
+-webkit-transform: rotate(360deg);
+-o-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+}
+.rotating {
+-webkit-animation: rotating 2s linear infinite;
+-moz-animation: rotating 2s linear infinite;
+-ms-animation: rotating 2s linear infinite;
+-o-animation: rotating 2s linear infinite;
+animation: rotating 2s linear infinite;
+}
+

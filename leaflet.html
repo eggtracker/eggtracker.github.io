@@ -1,0 +1,109 @@
+<html>
+<head>
+<link rel="stylesheet" href="leaflet.css" />
+<style>
+	body{
+		margin:0;
+		padding:0;
+	}
+</style>
+<script src="leaflet.js"></script>
+</head>
+<body onload="loadviews();">
+<div id="upmsg" style="font-family:Arial;font-size:24px;">
+</div>
+<div id="map" style="width:100%;height:100%;"></div>
+</div>
+</body>
+
+<script>
+try{
+var estates=[];
+var map=L.map('map',{zoomControl:false,maxZoom:19,minZoom:16}).setView([0,0],19);
+var osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{minZoom:16,maxZoom:19});
+var ely=L.layerGroup();
+var snackbar=undefined;
+var onMapClick="";
+ely.addTo(map);
+var urthere=L.marker([0,0]);
+var chooseEstateLatlon=[];
+var thisUser="";
+osm.addTo(map);
+urthere.addTo(map);
+
+function loadviews(){
+    snackbar=document.getElementById("upmsg");
+}
+function mapclickfunction(e){
+    mapClick(onMapClick,e.latlng['lat'],e.latlng['lng']);
+}
+map.on('click',mapclickfunction);
+function showMessage(msg){
+    snackbar.innerHTML=msg+"<button onClick='hideMessage();' style='font-size:35px;'>Cancel</button>";
+}
+function hideMessage(){
+    snackbar.innerHTML="";
+}
+function javaCall(command,arguments){
+    console.log("callFromJavascriptYgk>"+command+">"+arguments.join(";"));
+}
+function panToLocation(lat,lon){
+    map.panTo(L.latLng(lat,lon));
+    urthere.setLatLng(L.latLng(lat,lon));
+}
+function remove_junk_estates_view(){
+    for(var i=0;i<estates.length;i++){
+        ely.removeLayer(estates[i]);
+    }
+}
+function update_estate_view(txt,unm){
+    thisUser=unm;
+    remove_junk_estates_view();
+    estates=[];
+    var lxt=txt.split("@");
+    for(var i=0;i<lxt.length;i++){
+        lx=lxt[i].split(";");
+        bbox=[
+            parseFloat(lx[1]),
+            parseFloat(lx[2]),
+            parseFloat(lx[3]),
+            parseFloat(lx[4])
+        ];
+        estates.push(L.polygon([
+            [bbox[0],bbox[1]],
+            [bbox[2],bbox[1]],
+            [bbox[2],bbox[3]],
+            [bbox[0],bbox[3]]
+        ],{color:getEColor(String(lx[0])),fillColor:getEColor(String(lx[0])),fillOpacity:0.5}));
+        estates[estates.length-1].addTo(ely);
+    }
+}
+function getEColor(uname){
+	if(thisUser==uname){
+		return("green");
+	}else{
+		return("red");
+	}
+}
+function mapClick(act,lat,lng){
+    if(act==""){
+        
+    }
+    if(act=="chooseEstateSize"){
+        chooseEstateLatlon=[lat,lng];
+        showMessage("Now, set the size of the real estate.<br><input type='range' min='10' max='100' value='50' id='estateSizeBar' style='width:75%;'><button onclick='estateSizeGo();' style='font-size:35px;'>OK</button>");
+    }
+    onMapClick="";
+}
+function estateSizeGo(){
+    args=[String(document.getElementById("estateSizeBar").value),String(chooseEstateLatlon[0]),String(chooseEstateLatlon[1])];
+    hideMessage();
+    javaCall("createEstate",args);
+}
+function register_estate(){
+    showMessage("Click to the location of the center of your real estate.</br>Do not place it near other real estates.");
+    onMapClick="chooseEstateSize";
+}
+}catch(err){document.write(err);}
+</script>
+</html>

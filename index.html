@@ -1,1 +1,90 @@
+<html>
+	<meta name="google-signin-client_id" content="323789148668-md69vbvbiis7vaf74j5o7fctf4gra6i7.apps.googleusercontent.com">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="leaflet.css"/>
+	<link rel="stylesheet" href="main.css"/>
+	<head>
+		<title>Egg Tracker client v0.1</title>
+	</head>
+	<script src="leaflet.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="main.js"></script>
+	<body>
+		<div id="welcome">
+			<h2>Welcome to Egg Tracker 2022!</h2>
+			<p>
+			This annual event is all about collecting eggs, with your device's GPS.
+			All you have to do is open the app, and walk around Deskati.
+			By collecting eggs, you can get to the top of the leaderboard, and become the big winner!
+			</p>
+			<br>
+			<button  style="width:100px;height:100px;"onclick="askRename();">Next</button>
+		</div>
+		
+		<div id="screen0" style="display:none;">
+			<img src="assets/w.png"/><br>
+			Something went wrong!
+		</div>
+		<center id="screen1" style="display:none;">
+			<br><br><br><br><br><br>
+			<b style="font-size:100px;" class="txtonimg">Egg Tracker</b><br><br><br><br>
+			<b style="font-size:30px;" class="txtonimg">Find hidden eggs using your device's GPS!</b> <br>
+			<b style="font-size:30px;" class="txtonimg">Made by <a href="https://github.com/giorkesk">giorkesk</a>, maintained by Υπηρεσίες Γιώργος Κεσκ</b><br>
+			<div id="signInBtn01">
+				<div id="signInBtn11">
+					<div class="g-signin2" data-onsuccess="onSignIn">
+					</div>
+				</div>
+				<div id="signInBtn12" style="display:none;">
+					<span>Logging in...</span>
+				</div>
+			</div>
+		</center>
+		<div id="screen2" style="display:none;">
+			<center id="wow">
+				<img src="assets/egghumongous.png" id="hegg"/>
+				<img src="assets/shine.png" id="hshine" class="rotating"/>
+				<h1>You found an egg!</h1>
+				<img src="assets/x.png" onclick="document.getElementById('wow').style.display='none';"/>
+			</center>
+			<center id="lose">
+				<img src="assets/arlekinos.png" id="hegg"/>
+				<img src="assets/shine2.png" id="hshine" class="rotating"/>
+				<h1>You were eaten.</h1>
+				<h4>Now what?</h4>
+				<p>You lost 3 eggs.</p>
+				<img src="assets/x.png" onclick="document.getElementById('lose').style.display='none';"/>
+			</center>
+			<div id="meter">
+				<div id="meter_in">
+					<div id="meter_point"></div>
+				</div>
+			</div>
+			<div id="bar">
+				<img class="bar_icon" src="assets/menu.png" onclick="setScreen(3);document.getElementById('screen3').innerText='Loading...';ws.send('self');"/>
+				<img class="bar_icon" src="assets/lb.png" onclick="setScreen(4);document.getElementById('leaderboard').innerText='Loading...';"/>
+				<img class="bar_icon_smol" src="assets/egg.png" onclick="alert('Search for eggs using your devices GPS.');"/><span class="bar_text" id="eggsind">0</span>
+				<img class="bar_icon_smol" src="assets/coinsbig.png" onclick="alert('Get coins by finding eggs, or if your friends join Egg Tracker.');"/><span class="bar_text" id="coinsind">0</span>
+			</div>
+			<div id="desc"><h2>erirgjior</h2>why?</div>
+			<center id="down">
+				<img class="tool_icon" src="assets/tool1.png" id="tool1" onclick="setTool(1);"/>
+				<img class="tool_icon" src="assets/tool2.png" id="tool2" onclick="setTool(2);"/>
+				<img class="tool_icon" src="assets/tool3.png" id="tool3" onclick="setTool(3);"/>
+				<img class="tool_icon" src="assets/tool4.png" id="tool4" onclick="setTool(4);"/>
+			</center>
+			<div id="map" style="width:100%;height:100%;"></div>
+		</div>
+		<div id="screen3" style="display:none;">
+			
+		</div>
+		<center id="screen4" style="display:none;">
+			<h1><span style='color:#808080' onclick='backScreen();'><&nbsp&nbsp</span>Leaderboard</h1>
+			<p>Continue finding eggs to make it to the top!</p>
+			<div id="leaderboard">
+			</div>
+		</center>
+	</body>
+</html>
 
